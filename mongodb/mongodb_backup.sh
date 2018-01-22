@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 # sco mongodb database backup
 # This script backup is a backup mongodb copy mode, three nodes, A is primary, BC is secondary
 # mongodb in the backup copy set will automatically select an available secondary backup
