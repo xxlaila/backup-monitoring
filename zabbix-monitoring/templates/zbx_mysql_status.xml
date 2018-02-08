@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2018-02-01T01:56:05Z</date>
+    <date>2018-02-08T06:54:44Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -1076,49 +1076,6 @@
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>Mysql 查询缓存大小</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>mysql.stat[mysql_status,query_cache_size]</key>
-                    <delay>30</delay>
-                    <history>90</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Mysql Qcache</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
                     <name>Mysql 慢查询的次数</name>
                     <type>0</type>
                     <snmp_community/>
@@ -1271,7 +1228,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100*(last(&quot;mysql.stat[mysql_status,Open_tables]&quot;)/last(&quot;mysql.stat[mysql_status,Opened_tables]&quot;))</params>
+                    <params>100*(mysql.stat[mysql_status,Open_tables]/mysql.stat[mysql_status,Opened_tables])</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -1443,7 +1400,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>(last(&quot;mysql.stat[mysql_status,Open_tables]&quot;)/last(&quot;mysql.stat[mysql_status,table_open_cache]&quot;))*100</params>
+                    <params>last(&quot;mysql.stat[mysql_status,Open_tables]&quot;)/last(&quot;mysql.stat[mysql_status,table_open_cache]&quot;)*100</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -1486,7 +1443,50 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>((last(&quot;mysql.stat[mysql_status,query_cache_size]&quot;)-last(&quot;mysql.stat[mysql_status,Qcache_free_memory]&quot;))/last(&quot;mysql.stat[mysql_status,query_cache_size]&quot;))*100</params>
+                    <params>((last(&quot;mysql.stat[var,query_cache_size]&quot;)-last(&quot;mysql.stat[mysql_status,Qcache_free_memory]&quot;))/last(&quot;mysql.stat[var,query_cache_size]&quot;))*100</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Mysql Qcache</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>Mysql 查询缓存大小</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>mysql.stat[var,query_cache_size]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>

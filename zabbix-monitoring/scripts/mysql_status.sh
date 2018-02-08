@@ -14,4 +14,8 @@ case $1 in
     result=$(${MYSQL_BIN} -e "show status like '%${vars}%';"|tail -1|awk '{print $2}')
     echo ${result}
     ;;
+  var)
+    result=$(${MYSQL_BIN} -e "show variables like '%${vars}%';"|tail -1|awk '{print $2}')
+    echo ${result}
+    ;;
 esac
