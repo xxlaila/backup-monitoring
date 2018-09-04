@@ -1,19 +1,22 @@
-# **1、脚本存放目录**
+# 1、脚本存放目录
 /usr/lib/zabbix/alertscripts，脚本的权限是zabbix 账户，具有可执行权限
 # 2、重要参数介绍：
+```
 toparty："2" 这个参数是在企业微信里面部门的id
 Corpid：企业的CorpID标示
 Secret：管理组的密钥凭证
 Agentid：新建应用的id
-只需要求修改以上参数即可
+```
+## 2.1 只需要求修改以上参数即可
 ![image](https://github.com/xxlaila/backup-monitoring/blob/master/zabbix-monitoring/WeChat_Tightening/image/1.png)
 以上部门没有新建，只是在这个应用中新增加了几个用户。最好的方式是增加一个部门组，用户添加到部门组里面，这种方式最科学
-3、登陆zabbix 进行配置
-3.1、创建一个媒介类型
+# 3、登陆zabbix 进行配置
+## 3.1、创建一个媒介类型
 ![image](https://github.com/xxlaila/backup-monitoring/blob/master/zabbix-monitoring/WeChat_Tightening/image/2.png)
-3.2、创建一个告警类别
+## 3.2、创建一个告警类别
 ![image](https://github.com/xxlaila/backup-monitoring/blob/master/zabbix-monitoring/WeChat_Tightening/image/3.png)
 ![image](https://github.com/xxlaila/backup-monitoring/blob/master/zabbix-monitoring/WeChat_Tightening/image/4.png)
+```
 服务器:{HOST.NAME}发生: {TRIGGER.NAME}故障!
 
 告警主机:{HOST.NAME}
@@ -25,6 +28,7 @@ Agentid：新建应用的id
 告警信息:{TRIGGER.NAME}
 告警时间:{EVENT.DATE} {EVENT.TIME}
 事件ID:{EVENT.ID}
+```
 ![image](https://github.com/xxlaila/backup-monitoring/blob/master/zabbix-monitoring/WeChat_Tightening/image/5.png)
 服务器:{HOST.NAME}: {TRIGGER.NAME}已恢复!
 
