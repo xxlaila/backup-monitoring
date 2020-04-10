@@ -16,7 +16,7 @@ CI_URLS="https://restapi.amap.com/v3/config/district?"
 # 城市值
 city_s = ["重庆"]
 
-# zabbix
+# zabbix (https://www.zabbix.com/documentation/current/manual/api/reference)
 # 3.4 APi (https://www.zabbix.com/documentation/3.4/zh/manual/api)
 # ApiUrl = 'http://zabbix.ops.xxlaila.cn/zabbix/api_jsonrpc.php'
 
@@ -24,3 +24,6 @@ city_s = ["重庆"]
 ApiUrl = 'http://zabbix.dev.xxlaila.cn/api_jsonrpc.php'
 user = "Admin"
 password = "zabbix"
+
+# zabbix application name (https://www.zabbix.com/documentation/current/manual/api/reference/itemprototype/create)
+app_name = "tianqi"

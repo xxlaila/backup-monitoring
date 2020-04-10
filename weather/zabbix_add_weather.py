@@ -57,9 +57,27 @@ def get_host(auth):
     # print(hostid, interface)
     return hostid, interface
 
+def create_application(auth):
+    """
+    创建application，
+    :param auth:
+    :return:
+    """
+    data = {
+        "jsonrpc": "2.0",
+        "method": "application.create",
+        "params": {
+            "name": config.app_name,
+            "hostid": hosts_id
+        },
+        "auth": auth,
+        "id": 1
+    }
+    httpagents = requests.post(url=config.ApiUrl, headers=header, json=data)
+    # print(json.loads(httpagents.content)['result']['applicationids'][0])
+    return json.loads(httpagents.content)['result']['applicationids'][0]
 
 def createhttpitem(auth):
-    hosts_id, interface_id = get_host(auth)
     for dic in city:
         data={
         "jsonrpc": "2.0",
@@ -82,7 +100,10 @@ def createhttpitem(auth):
             "name":"%s" % dic['names'],
             "value_type":"1",
             "output_format":"0",
-            "timeout":"3s"
+            "timeout":"3s",
+            "applications": [
+                appli_id
+            ],
 
         },
         "auth": auth,
@@ -102,6 +123,9 @@ def createhttpitem(auth):
             "type": "18",
             "master_itemid": httpagent,
             "value_type": "1",
+            "applications": [
+                appli_id
+            ],
             "preprocessing": [
                 {
                     "type": "12",
@@ -126,6 +150,9 @@ def createhttpitem(auth):
             "type": "18",
             "master_itemid": httpagent,
             "value_type": "1",
+            "applications": [
+                appli_id
+            ],
             "preprocessing": [
                 {
                     "type": "12",
@@ -149,6 +176,9 @@ def createhttpitem(auth):
             "type": "18",
             "master_itemid": httpagent,
             "value_type": "3",
+             "applications": [
+                 appli_id
+             ],
             "preprocessing": [
                 {
                     "type": "12",
@@ -172,6 +202,9 @@ def createhttpitem(auth):
             "type": "18",
             "master_itemid": httpagent,
             "value_type": "1",
+            "applications": [
+                appli_id
+            ],
             "preprocessing": [
                 {
                     "type": "12",
@@ -195,6 +228,9 @@ def createhttpitem(auth):
             "type": "18",
             "master_itemid": httpagent,
             "value_type": "0",
+             "applications": [
+                 appli_id
+             ],
             "preprocessing": [
                 {
                     "type": "12",
@@ -237,4 +273,6 @@ def createhttpitem(auth):
 if __name__ == '__main__':
     city = array_city()
     auth=gettoken()
+    hosts_id, interface_id = get_host(auth)
+    appli_id = create_application(auth)
     createhttpitem(auth)
