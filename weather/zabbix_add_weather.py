@@ -234,7 +234,7 @@ def createhttpitem(auth):
         print(json.loads(triggercreate.content))
     return json.loads(dependqw.content)
 
-
-city = array_city()
-auth=gettoken()
-createhttpitem(auth)
+if __name__ == '__main__':
+    city = array_city()
+    auth=gettoken()
+    createhttpitem(auth)
